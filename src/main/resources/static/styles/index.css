@@ -1,0 +1,45 @@
+@import './colours.css';
+@import './components/index.css';
+@import './fonts.css';
+@import './variables.css';
+
+body {
+  background-color: var(--flag-grey-200);
+  color: var(--flag-black);
+  font-family: var(--flag-font-family);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+[flag-list-item] {
+  background-color: var(--flag-white);
+  min-height: var(--flag-space-xl);
+  padding: var(--flag-space-xs);
+  position: relative;
+
+  &:has(a) {
+    &:hover {
+      background-color: var(--flag-primary-100);
+    }
+  
+    &:active {
+      background-color: var(--flag-primary-200);
+    }
+  }
+
+  a {
+    &::after {
+      content: '';
+      cursor: pointer;
+      inset: 0;
+      position: absolute;
+    }
+  }
+}
+
+a {
+  color: var(--flag-primary-500);
+}

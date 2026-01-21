@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  postgres:
+    build:
+      context: ./src/main/resources
+      dockerfile: Dockerfile
+    container_name: flags_db
+    environment:
+      POSTGRES_DB: flags-db
+      POSTGRES_USER: flags-user
+      POSTGRES_PASSWORD: test
+    networks:
+      - flags_network
+    ports:
+      - "9091:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flags-user -d flags-db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flags_backend
+    ports:
+      - "1103:1103"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/flags-db
+      SPRING_DATASOURCE_USERNAME: flags-user
+      SPRING_DATASOURCE_PASSWORD: test
+    networks:
+      - flags_network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+networks:
+  flags_network:
+    driver: bridge

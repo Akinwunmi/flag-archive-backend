@@ -1,0 +1,15 @@
+:root {
+  --_white: 0, 0%, 100%;
+  --flag-white: hsl(var(--_white));
+
+  --_black: 0, 0%, 7%;
+  --flag-black: hsl(var(--_black));
+
+  --_grey: 235, 10%;
+  --flag-grey-200: hsl(var(--_grey), 88%);
+
+  --_primary: 240, 100%;
+  --flag-primary-100: hsl(var(--_primary), 97%);
+  --flag-primary-200: hsl(var(--_primary), 90%);
+  --flag-primary-500: hsl(var(--_primary), 50%);
+}

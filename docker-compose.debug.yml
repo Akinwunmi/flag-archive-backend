@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  backend:
+    command:
+      [
+        "java",
+        "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005",
+        "-jar",
+        "/app.jar",
+      ]
+    ports:
+      - "5005:5005" # Debug port

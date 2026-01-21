@@ -1,0 +1,19 @@
+server:
+  port: 1103
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: flags
+  datasource:
+    url: jdbc:postgresql://flags_postgres_db:9091/flags_db
+    username: flags-user
+    password: test
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
